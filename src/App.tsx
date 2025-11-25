@@ -24,9 +24,9 @@ export default function App() {
       />
 
       <section>
-        <div className=" max-w-5xl m-auto p-10 pt-16">
+        <div className=" max-w-6xl m-auto p-10 pt-16">
           <h2 className='text-center font-bold text-gray-800 text-4xl mb-10'>Nuestros productos</h2>
-          <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-3'>
+          <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8'>
             {db.map(i =>
               <Guitar
                 key={i.id}
