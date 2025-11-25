@@ -1,7 +1,7 @@
 import { db } from './data/data';
 import Guitar from './components/Guitar';
 import Header from './components/Header';
-import { useReducer } from 'react';
+import { useMemo, useReducer } from 'react';
 import { cartReducer, initialState } from './hooks/guitar-reducer';
 import { useCart } from './hooks/useCart';
 
@@ -9,11 +9,19 @@ export default function App() {
 
   const [reducer, dispatch] = useReducer(cartReducer, initialState);
 
-  const { addToCart } = useCart();
+  const { addToCart, calcularTotal } = useCart();
+
+  useMemo(() => {
+    localStorage.setItem('cart', JSON.stringify(reducer.cart));
+  }, [reducer.cart])
 
   return (
     <>
-      <Header />
+      <Header 
+        cart={reducer.cart}
+        calcularTotal={calcularTotal}
+        dispatch={dispatch}
+      />
 
       <section>
         <div className=" max-w-5xl m-auto p-10 pt-16">

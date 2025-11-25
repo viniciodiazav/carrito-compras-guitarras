@@ -7,7 +7,14 @@ export const useCart = () => {
         dispatch({type: "add-to-cart", payload: {item: guitar}});
     }
 
+    const calcularTotal = (cart: ItemCart[]) => {
+        let total = 0;
+        cart.forEach(i => total += (i.quantity * i.price))
+        return total;
+    }
+
     return {
         addToCart,
+        calcularTotal,
     }
 }

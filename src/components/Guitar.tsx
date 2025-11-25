@@ -26,7 +26,7 @@ export default function Guitar({ item, addToCart, dispatch }: GuitarProps) {
                 </div>
             </div>
             <button
-                className="bg-red-500 w-full p-3 text-white uppercase font-bold"
+                className="bg-red-500 w-full p-3 text-white uppercase font-bold cursor-pointer hover:bg-red-800 transition-all"
                 onClick={() => addToCart(dispatch, item)}
             >agregar al carrito</button>
         </div>
