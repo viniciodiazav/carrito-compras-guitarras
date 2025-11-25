@@ -5,3 +5,7 @@ export type Guitar = {
     description: string;
     price: number;
 }
+
+export type ItemCart = Guitar & {
+    quantity: number;
+}

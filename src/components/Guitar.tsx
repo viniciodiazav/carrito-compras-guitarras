@@ -1,18 +1,19 @@
+import type { CartActions } from "../hooks/guitar-reducer";
 import type { Guitar } from "../types/types"
 
 type GuitarProps = {
     item: Guitar;
+    addToCart: (dispatch: React.ActionDispatch<[action: CartActions]>, guitar: Guitar) => void;
+    dispatch: React.ActionDispatch<[action: CartActions]>;
 }
 
-export default function Guitar({ item }: GuitarProps) {
-
-    console.log(item.image)
+export default function Guitar({ item, addToCart, dispatch }: GuitarProps) {
 
     return (
         <div className="bg-white rounded-2xl overflow-hidden flex flex-col items-center shadow">
             <div className=" grid grid-cols-2">
                 <div>
-                    <img src={`../public/img/${item.image}.jpg`} alt={item.image}
+                    <img src={`../img/${item.image}.jpg`} alt={item.image}
                         className="w-32 rounded-r-2xl"
                     />
                 </div>
@@ -26,6 +27,7 @@ export default function Guitar({ item }: GuitarProps) {
             </div>
             <button
                 className="bg-red-500 w-full p-3 text-white uppercase font-bold"
+                onClick={() => addToCart(dispatch, item)}
             >agregar al carrito</button>
         </div>
     )
